@@ -35,7 +35,6 @@ logging.info("Application started!")
 
 models.connect_db(app)
 app.app_context().push()
-models.db.create_all()
 
 
 @app.route('/login', methods=['POST'])
@@ -168,6 +167,8 @@ def delete_inductee(id):
 
 
 if __name__ == '__main__':
+    db.drop_all()
+    db.create_all()
     create_seed_users()
     #create_seed_inductees()
     if env.DEBUG: print("Running on localhost: http://127.0.0.1:5000")
