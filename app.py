@@ -171,4 +171,4 @@ if __name__ == '__main__':
     create_seed_users()
     #create_seed_inductees()
     if env.DEBUG: print("Running on localhost: http://127.0.0.1:5000")
-    serve(app, host="0.0.0.0", port=5001)
+    serve(app, host="0.0.0.0", port=env.PORT)
