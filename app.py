@@ -16,7 +16,7 @@ import base64
 
 app = Flask(__name__)
 
-CORS(app, origins=env.ALLOWED_ORIGINS, supports_credentials=True)
+CORS(app, origins="*", supports_credentials=True)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = env.DB_URI
 app.config["SECRET_KEY"] = env.FLASK_SECRETKEY
