@@ -20,7 +20,13 @@ CORS(app, origins="*", supports_credentials=True)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = env.DB_URI
 app.config["SECRET_KEY"] = env.FLASK_SECRETKEY
-app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {"pool_pre_ping": True}
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    "pool_size": 10,
+    "max_overflow": 20,
+    "pool_recycle": 3600,
+    "pool_pre_ping": True,
+    "connect_timeout": 60
+}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 jwt = JWTManager(app)
 
