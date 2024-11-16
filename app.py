@@ -167,7 +167,6 @@ def delete_inductee(id):
 
 
 if __name__ == '__main__':
-    db.drop_all()
     db.create_all()
     create_seed_users()
     #create_seed_inductees()
