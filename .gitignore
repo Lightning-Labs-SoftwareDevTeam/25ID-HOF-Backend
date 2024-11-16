@@ -1,5 +1,6 @@
 *.log
 __pycache__
 venv
-migrations
+migrations/versions/.env
+instance
 env.py
