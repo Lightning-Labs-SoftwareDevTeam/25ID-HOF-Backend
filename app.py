@@ -170,5 +170,9 @@ if __name__ == '__main__':
     db.create_all()
     create_seed_users()
     #create_seed_inductees()
-    if env.DEBUG: print("Running on localhost: http://127.0.0.1:5000")
-    serve(app, host="0.0.0.0", port=env.PORT)
+    if env.DEBUG: 
+        print("Running on localhost: http://127.0.0.1:5000")
+        port = env.PORT
+    else:
+        port = int(os.environ.get('PORT', 5000))
+    serve(app, host="0.0.0.0", port=port)
