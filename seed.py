@@ -5,6 +5,8 @@ import initial_inductees
 
 
 def create_seed_users():
+    db.session.query(User).delete()
+    db.session.commit()
     username = env.ADMIN_USERNAME
     password = env.ADMIN_PASSWORD
     if not User.query.filter_by(username=username).first():
@@ -17,6 +19,8 @@ def create_seed_users():
 
 
 def create_seed_inductees():
+    db.session.query(Inductee).delete()
+    db.session.commit()
     for inductee_data in initial_inductees.INDUCTEES:
         name = inductee_data['name']
         rank = inductee_data['rank']
