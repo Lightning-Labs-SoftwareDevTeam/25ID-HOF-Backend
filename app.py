@@ -180,8 +180,8 @@ def delete_inductee(id):
 
 if __name__ == '__main__':
     db.create_all()
-    create_seed_users()
-    create_seed_inductees()
+    #create_seed_users()
+    #create_seed_inductees()
     if env.DEBUG: 
         print("Running on localhost: http://127.0.0.1:5000")
         port = env.PORT
