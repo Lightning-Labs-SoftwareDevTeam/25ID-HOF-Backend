@@ -13,6 +13,7 @@ import proj_util
 import os
 import logging
 import base64
+import sys
 
 app = Flask(__name__)
 
@@ -34,7 +35,7 @@ if env.DEBUG:
     logging.basicConfig(level=logging.DEBUG, format='{time} - %(levelname)s: %(message)s'.format(time=proj_util.now_hst("string")), filename="log.log", filemode='a')
     debug = DebugToolbarExtension(app)
 else:
-    logging.basicConfig(level=logging.INFO, format='{time} - %(levelname)s: %(message)s'.format(time=proj_util.now_hst("string")), filename="log.log", filemode='a')
+    logging.basicConfig(level=logging.INFO, format='{time} - %(levelname)s: %(message)s'.format(time=proj_util.now_hst("string")), stream=sys.stdout)
 
 logging.info("Application started!")
 
@@ -66,7 +67,7 @@ def login():
 
 @app.route('/inductees', methods=['GET'])
 def get_inductees():
-    all_inductees = Inductee.query.all()    
+    all_inductees = Inductee.query.all()
     inductees = []
     for inductee in all_inductees:
         image_base64 = None
